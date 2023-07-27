@@ -5,7 +5,7 @@
 # Imports
 #############################################################################################
 
-# import msvcrt  # For getting user input on Windows (we use this on our main menu)
+# import msvcrt  # used to be getting user input on Windows (we use this on our main menu)
 import subprocess  # For executing a shell command (we use this to clear the screen)
 
 

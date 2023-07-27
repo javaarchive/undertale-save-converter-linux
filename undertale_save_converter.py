@@ -5,7 +5,7 @@
 # Imports
 #############################################################################################
 
-import msvcrt  # For getting user input on Windows (we use this on our main menu)
+# import msvcrt  # For getting user input on Windows (we use this on our main menu)
 import subprocess  # For executing a shell command (we use this to clear the screen)
 
 
@@ -18,7 +18,7 @@ def clear_screen():
     Clears the terminal screen.
     Only compatible with Windows.
     """
-    return subprocess.call("cls", shell=True) == 0
+    return subprocess.call("clear", shell=True) == 0
 
 
 #############################################################################################
@@ -197,16 +197,16 @@ def display_menu():
     print("     Checkpoint: https://gbatemp.net/threads/checkpoint-a-simple-and-fast-save-manager.485591")
     print("           JKSM: https://github.com/J-D-K/JKSM")
     print("")
-    print("  Press (1) or (2) to select a menu option, or press (Escape) to exit:")
+    print("  Press (1) or (2) to select a menu option, or type e to exit, after doing any of these press enter:")
 
-    user_input = msvcrt.getch()
-    if user_input == b'1':
+    user_input = input() # msvcrt.getch()
+    if user_input == '1':
         # 1 was pressed
         convert_from_pc_to_switch()
-    elif user_input == b'2':
+    elif user_input == '2':
         # 2 was pressed
         convert_from_switch_to_pc()
-    elif user_input == b'\x1b':
+    elif user_input == 'e':
         # Exit, because escape key was pressed
         return
     else:

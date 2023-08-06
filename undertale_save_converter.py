@@ -53,9 +53,9 @@ def pc_undertale_ini_to_switch_text(input_file):
     Converts all of the undertale.ini file's lines to a single line of text meant for the Switch game save file
     """
     result = ''
-    file_contents = input_file.read()
-
-    for cnt, line in enumerate(file_contents):
+    # file_contents = input_file.read()
+    cnt = 0
+    for line in input_file:
         # Remove line break character from end of line
         new_line = line.replace("\n", '')
 
@@ -64,6 +64,7 @@ def pc_undertale_ini_to_switch_text(input_file):
             # For Example: Room="31.000000"
             #     Becomes: Room=\"31.000000\"
             r = new_line.split("=")
+            # print("DEBUG",r,new_line)
             p = r[1].split('"')
             p = p[1]
             new_line = r[0] + '=\\"' + p + '\\"'
@@ -72,6 +73,7 @@ def pc_undertale_ini_to_switch_text(input_file):
         new_line = new_line + "\\r\\n"
 
         result += new_line
+        cnt += 1
 
     # Replace double line endings before section headers with a single carriage return
     result = result.replace("\\r\\n[", "\\r[")
